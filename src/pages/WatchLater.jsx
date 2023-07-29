@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 // import { videos } from "../data";
 import { Link } from 'react-router-dom';
 import styled from "styled-components";
@@ -32,9 +32,8 @@ const Card = styled.div`
 
 
 export const WatchLater = () => {
-//   const [watchLaterVideos, setWatchLaterVideos] = useState([]);
-    const {watchLaterVideos, removeVideoFromWatchLater} = useData();
-  
+    const {removeVideoFromWatchLater} = useData();
+    const storedWatchLaterVideos = JSON.parse(localStorage.getItem('watchLaterVideos')) || [];
 
   return (
     <div>
@@ -44,11 +43,11 @@ export const WatchLater = () => {
         <Left />
         <Link to="/"><ChevronLeft /></Link>
         <Right>
-          {watchLaterVideos.length === 0 ? (
+          {storedWatchLaterVideos.length === 0 ? (
             <p>No videos added to watch later.</p>
           ) : (
             <div>
-              {watchLaterVideos.map((video) => (
+              {storedWatchLaterVideos.map((video) => (
                 <Card key={video._id}>
                   <img src={video.thumbnail} alt={video.category} width={200} />
                   <b>{video.title}</b>

@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 import { videos } from "../data";
 import { ChevronLeft } from 'react-bootstrap-icons';
 import { Search,Clock,ClockFill } from 'react-bootstrap-icons';
+import { useData } from '../context/DataProvider';
 
 const Title = styled.h1`
   padding: 30px ;
@@ -76,7 +77,10 @@ border-radius: 0 0 0 0.5rem ;
 const Explore = () => {
     const [searchQuery, setSearchQuery] = useState('');
     const [searchResults, setSearchResults] = useState([]);
-    const [watchLaterVideos, setWatchLaterVideos] = useState([]);
+    // const [watchLaterVideos, setWatchLaterVideos] = useState([]);
+
+    const {watchLaterVideos,setWatchLaterVideos} = useData();
+
     const handleSearch = (e) => {
     const query = e.target.value.toLowerCase();
     setSearchQuery(query);

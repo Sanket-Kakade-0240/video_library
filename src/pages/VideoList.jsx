@@ -31,20 +31,16 @@ border-radius: 0.5rem;
 font-size: 14px;
 position: relative;
 `
-
 const Description = styled.div`
-  display: flex;
-  
+  display: flex; 
 `
 const ProfileIcon = styled.img`
-
   margin-right: 0.5rem;
   border-radius: 30px;
   height: 40px;
   width: 40px;
 `
 const Info = styled.div`
-
 `
 const WatchLater = styled.button`
 border:none;
@@ -56,10 +52,8 @@ border-radius: 0 0 0 0.5rem ;
 
 export const VideoList = () => {
   const { category } = useParams();
-
-  // const [watchLaterVideos, setWatchLaterVideos] = useState([]);
   const {watchLaterVideos,setWatchLaterVideos} = useData();
-
+  
   const filteredVideos = videos.filter(
     (item) => item.category.toLowerCase() === category.toLowerCase()
   );

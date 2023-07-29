@@ -1,13 +1,8 @@
 import React, { createContext, useContext, useState,useEffect } from 'react'
 const DataContext = createContext()
 
-
 const DataProvider = ({children}) => {
   const [watchLaterVideos, setWatchLaterVideos] = useState([]);
-  useEffect(() => {
-    const storedWatchLaterVideos = JSON.parse(localStorage.getItem('watchLaterVideos')) || [];
-    setWatchLaterVideos(storedWatchLaterVideos);
-  }, []);
 
   useEffect(() => {
     localStorage.setItem('watchLaterVideos', JSON.stringify(watchLaterVideos));
