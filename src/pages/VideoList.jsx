@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { videos } from "../data";
 import styled from "styled-components";
@@ -7,6 +7,7 @@ import Footer from '../components/Footer'
 import Navbar from '../components/Navbar'
 import { ChevronLeft } from 'react-bootstrap-icons';
 import { Clock,ClockFill } from 'react-bootstrap-icons';
+import { useData } from '../context/DataProvider';
 
 const Title = styled.h1`
   padding-top: 30px ;
@@ -56,7 +57,8 @@ border-radius: 0 0 0 0.5rem ;
 export const VideoList = () => {
   const { category } = useParams();
 
-  const [watchLaterVideos, setWatchLaterVideos] = useState([]);
+  // const [watchLaterVideos, setWatchLaterVideos] = useState([]);
+  const {watchLaterVideos,setWatchLaterVideos} = useData();
 
   const filteredVideos = videos.filter(
     (item) => item.category.toLowerCase() === category.toLowerCase()
@@ -72,16 +74,6 @@ export const VideoList = () => {
       setWatchLaterVideos((prevWatchLaterVideos) => [...prevWatchLaterVideos, videoToAdd]);
     }
   };
-
-  if (filteredVideos.length === 0) {
-    return (
-      <div>
-        <h2>Category not found!</h2>
-        <Link to="/"> <ChevronLeft/>Back to home </Link>
-      </div>
-    );
-  }
-  
 
   return (
     <div>

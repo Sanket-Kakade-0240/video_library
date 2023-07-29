@@ -9,8 +9,8 @@ import { ChevronLeft } from 'react-bootstrap-icons';
 import { Search,Clock,ClockFill } from 'react-bootstrap-icons';
 
 const Title = styled.h1`
-    padding: 30px ;
-    text-align: center;
+  padding: 30px ;
+  text-align: center;
 `
 const Head = styled.div`
 display: flex;
@@ -24,14 +24,12 @@ width: 50%;
 height: 5vh;
 align-items: center;
 margin: auto;
-
 `;
 const Input = styled.input`
   border: none;
   width: 90%;
   height: 90%;
 `;
-
 const Container = styled.div`
     padding: 0 30px 30px 30px ;
     display: flex;
@@ -51,9 +49,8 @@ width: 200px;
 margin: 1rem;
 border-radius: 0.5rem;
 font-size: 14px;
-
+position: relative;
 `
-
 const Description = styled.div`
   display: flex;
   
@@ -75,8 +72,6 @@ top:0;
 right:0;
 border-radius: 0 0 0 0.5rem ;
 `
-
-
 
 const Explore = () => {
     const [searchQuery, setSearchQuery] = useState('');
@@ -118,28 +113,28 @@ const Explore = () => {
             </SearchContainer>
         </Head>
         <Container>
-            <Left/>
-            <Right>
-                {searchQuery && searchResults.length === 0 ? (<p>No results found.</p>) : (
-                <List>
+          <Left/>
+          <Right>
+              {searchQuery && searchResults.length === 0 ? (<p>No results found.</p>) : (
+              <List>
                 {searchResults.map((video) => (
-                    <Card key={video._id}>
-                    <img src={video.thumbnail} alt={video.category} width={200}/>
-                    <Description>
-                    <ProfileIcon src={video.thumbnail} />
-                    <Info>
-                    <b>{video.title}</b>
-                    <p>{video.views}|{video.creator}</p>
-                    
-                    </Info>
-                    </Description>
-                    <WatchLater onClick={() => toggleWatchLater(video._id)}>
-                    {watchLaterVideos.some((v) => v._id === video._id) ? <ClockFill/> : <Clock/>}
-                    </WatchLater>
-                    </Card>
+                  <Card key={video._id}>
+                  <img src={video.thumbnail} alt={video.category} width={200}/>
+                  <Description>
+                  <ProfileIcon src={video.thumbnail} />
+                  <Info>
+                  <b>{video.title}</b>
+                  <p>{video.views}|{video.creator}</p>
+                  
+                  </Info>
+                  </Description>
+                  <WatchLater onClick={() => toggleWatchLater(video._id)}>
+                  {watchLaterVideos.some((v) => v._id === video._id) ? <ClockFill/> : <Clock/>}
+                  </WatchLater>
+                  </Card>
                 ))}
-                </List>
-                )}
+              </List>
+              )}
           </Right>
         </Container>
         <hr />

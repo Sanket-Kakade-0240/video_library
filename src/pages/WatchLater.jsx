@@ -6,6 +6,7 @@ import Left from '../components/Left';
 import Footer from '../components/Footer'
 import Navbar from '../components/Navbar'
 import { ChevronLeft } from 'react-bootstrap-icons';
+import { useData } from '../context/DataProvider';
 
 const Title = styled.h1`
     padding-top: 30px ;
@@ -31,23 +32,9 @@ const Card = styled.div`
 
 
 export const WatchLater = () => {
-  const [watchLaterVideos, setWatchLaterVideos] = useState([]);
-
-  useEffect(() => {
-    const storedWatchLaterVideos = JSON.parse(localStorage.getItem('watchLaterVideos')) || [];
-    setWatchLaterVideos(storedWatchLaterVideos);
-  }, []);
-
-
-  useEffect(() => {
-    localStorage.setItem('watchLaterVideos', JSON.stringify(watchLaterVideos));
-  }, [watchLaterVideos]);
-
-  const removeVideoFromWatchLater = (id) => {
-    setWatchLaterVideos((prevWatchLaterVideos) =>
-      prevWatchLaterVideos.filter((video) => video._id !== id)
-    );
-  };
+//   const [watchLaterVideos, setWatchLaterVideos] = useState([]);
+    const {watchLaterVideos, removeVideoFromWatchLater} = useData();
+  
 
   return (
     <div>
