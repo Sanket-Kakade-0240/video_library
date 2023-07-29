@@ -1,10 +1,19 @@
 
 import './App.css';
-import Home from "./pages/HomePage";
-// import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import HomePage from "./pages/HomePage";
+import { VideoList } from "./pages/VideoList";
+import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 
 const App = () => {
-  return <Home/>;
+  return (
+    <Router>
+      <Routes>
+        <Route path="/videos/:category" element={<VideoList />} />
+        <Route path="/" element={<HomePage/>} />
+      </Routes>
+
+    </Router>
+  );
 };
 
 export default App;

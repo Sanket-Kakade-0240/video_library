@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { Search} from 'react-bootstrap-icons';
+import { Search, PersonCircle} from 'react-bootstrap-icons';
 
 
 const Container = styled.div`
@@ -48,7 +48,7 @@ const Center = styled.div`
 
 const Logo = styled.h1`
   font-weight: bold;
- 
+  margin-left: 25px;
 `;
 const Right = styled.div`
   flex: 1;
@@ -59,7 +59,7 @@ const Right = styled.div`
 `;
 
 const MenuItem = styled.div`
-  font-size: 14px;
+  font-size: 25px;
   cursor: pointer;
   margin-left: 25px;
   
@@ -82,7 +82,9 @@ const Navbar = () => {
             </SearchContainer>
         </Center>
         <Right>
-          <MenuItem>REGISTER</MenuItem>
+          <MenuItem>
+            <PersonCircle />
+          </MenuItem>
           
         </Right>
       </Wrapper>

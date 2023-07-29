@@ -2,8 +2,6 @@ import React from 'react'
 import styled from 'styled-components'
 import { Facebook, Instagram, Twitter, Pinterest, GeoAltFill,EnvelopeFill,TelephoneFill } from 'react-bootstrap-icons';
 
-
-
 const Container = styled.div`
 display: flex;
 
@@ -65,6 +63,7 @@ const Contacts = styled.div`
 const Footer = () => {
   return (
     <Container>
+        
         <LeftSide>
             <Brand>Uthub.io</Brand>
             <Description>Uthub.io is an e-video library that offers a wide variety of educational and entertaining videos. Whether you're looking for a tutorial on how to code, a lecture on history, or a comedy sketch, Uthub.io has something for everyone.
