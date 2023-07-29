@@ -9,9 +9,29 @@ import { ChevronLeft } from 'react-bootstrap-icons';
 import { Search,Clock,ClockFill } from 'react-bootstrap-icons';
 
 const Title = styled.h1`
-    padding-top: 30px ;
+    padding: 30px ;
     text-align: center;
 `
+const Head = styled.div`
+display: flex;
+align-items: center;
+`
+const SearchContainer = styled.div`
+border: 0.5px solid lightgray;
+display: flex;
+justify-content: space-between;
+width: 50%;
+height: 5vh;
+align-items: center;
+margin: auto;
+
+`;
+const Input = styled.input`
+  border: none;
+  width: 90%;
+  height: 90%;
+`;
+
 const Container = styled.div`
     padding: 0 30px 30px 30px ;
     display: flex;
@@ -20,15 +40,18 @@ const Container = styled.div`
 const Right = styled.div`
 flex: 6;
 padding: 20px;
+`
+const List = styled.div`
 display: flex;
 flex-wrap: wrap;
 `
+
 const Card = styled.div`
 width: 200px;
 margin: 1rem;
 border-radius: 0.5rem;
 font-size: 14px;
-position: relative;
+
 `
 
 const Description = styled.div`
@@ -42,7 +65,7 @@ const ProfileIcon = styled.img`
   height: 40px;
   width: 40px;
 `
-const Info = styled.div`
+const Info = styled.p`
 
 `
 const WatchLater = styled.button`
@@ -52,18 +75,8 @@ top:0;
 right:0;
 border-radius: 0 0 0 0.5rem ;
 `
-const SearchContainer = styled.div`
-  border: 0.5px solid lightgray;
-  display: flex;
-  justify-content: space-between;
-  margin-left: 25px;
-  padding: 5px;
-`;
 
-const Input = styled.input`
-  border: none;
-  
-`;
+
 
 const Explore = () => {
     const [searchQuery, setSearchQuery] = useState('');
@@ -77,8 +90,6 @@ const Explore = () => {
     setSearchResults(results);
     };
 
-    
-
     const toggleWatchLater = (id) => {
         if (watchLaterVideos.some((video) => video._id === id)) {
           setWatchLaterVideos((prevWatchLaterVideos) =>
@@ -89,15 +100,13 @@ const Explore = () => {
           setWatchLaterVideos((prevWatchLaterVideos) => [...prevWatchLaterVideos, videoToAdd]);
         }
       };
+      
   return (
     <div>
         <Navbar/>
         <Title>Explore</Title>
-        <Container>
-            <Left/>
-            <Link to="/"><ChevronLeft/></Link>
-
-            <Right>
+        <Head>
+            <Link to="/" style={{ paddingLeft:"4rem" }}><ChevronLeft/></Link>
             <SearchContainer>
                 <Input 
                 type="text"
@@ -105,31 +114,32 @@ const Explore = () => {
                 value={searchQuery}
                 onChange={handleSearch}
                  />
-                
-                <Search style={{ color: "gray", fontSize: 16 }} />
+                <Search style={{ width:"10%" ,color: "gray", fontSize: 16 }} />
             </SearchContainer>
-            {searchQuery && searchResults.length === 0 ? (
-            <p>No results found.</p>
-          ) : (
-            <div>
-              {searchResults.map((video) => (
-                <Card key={video._id}>
-                  <img src={video.thumbnail} alt={video.category} width={200}/>
-                  <Description>
-                  <ProfileIcon src={video.thumbnail} />
-                  <Info>
-                  <b>{video.title}</b>
-                  <p>{video.views}|{video.creator}</p>
-                  
-                  </Info>
-                  </Description>
-                  <WatchLater onClick={() => toggleWatchLater(video._id)}>
-                  {watchLaterVideos.some((v) => v._id === video._id) ? <ClockFill/> : <Clock/>}
-                  </WatchLater>
-                </Card>
-              ))}
-            </div>
-          )}
+        </Head>
+        <Container>
+            <Left/>
+            <Right>
+                {searchQuery && searchResults.length === 0 ? (<p>No results found.</p>) : (
+                <List>
+                {searchResults.map((video) => (
+                    <Card key={video._id}>
+                    <img src={video.thumbnail} alt={video.category} width={200}/>
+                    <Description>
+                    <ProfileIcon src={video.thumbnail} />
+                    <Info>
+                    <b>{video.title}</b>
+                    <p>{video.views}|{video.creator}</p>
+                    
+                    </Info>
+                    </Description>
+                    <WatchLater onClick={() => toggleWatchLater(video._id)}>
+                    {watchLaterVideos.some((v) => v._id === video._id) ? <ClockFill/> : <Clock/>}
+                    </WatchLater>
+                    </Card>
+                ))}
+                </List>
+                )}
           </Right>
         </Container>
         <hr />
