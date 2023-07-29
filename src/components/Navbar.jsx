@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { Search, PersonCircle} from 'react-bootstrap-icons';
+import {PersonCircle} from 'react-bootstrap-icons';
 
 
 const Container = styled.div`
@@ -28,18 +28,7 @@ const Language = styled.span`
   
 `;
 
-const SearchContainer = styled.div`
-  border: 0.5px solid lightgray;
-  display: flex;
-  justify-content: space-between;
-  margin-left: 25px;
-  padding: 5px;
-`;
 
-const Input = styled.input`
-  border: none;
-  
-`;
 
 const Center = styled.div`
   flex: 1;
@@ -71,15 +60,12 @@ const Navbar = () => {
       <Wrapper>
         <Left>
           <Language>EN</Language>
-          <Logo>Uthub.io</Logo>
           
         </Left>
         <Center>
-            <SearchContainer>
-                <Input placeholder="Search" />
-                
-                <Search style={{ color: "gray", fontSize: 16 }} />
-            </SearchContainer>
+          <Logo>Uthub.io</Logo>
+
+           
         </Center>
         <Right>
           <MenuItem>

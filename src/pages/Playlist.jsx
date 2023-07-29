@@ -1,11 +1,10 @@
 import React from 'react'
-import { categories } from "../data";
-import { Link } from 'react-router-dom';
 import Footer from '../components/Footer'
 import Navbar from '../components/Navbar'
 import styled from "styled-components";
 import Left from '../components/Left';
-
+import { categories } from "../data";
+import { Link } from 'react-router-dom';
 
 const Title = styled.h1`
     padding-top: 30px ;
@@ -28,12 +27,11 @@ width: 200px;
 margin: 1rem;
 border-radius: 0.5rem;
 `
-
-const Home = () => {
+const Playlist = () => {
   return (
     <div>
         <Navbar/>
-        <Title>Video Library</Title>
+        <Title>Playlist</Title>
         <Container>
             <Left/>
             <Right>
@@ -52,8 +50,7 @@ const Home = () => {
         <hr />
         <Footer/>
     </div>
-    
   )
 }
 
-export default Home
+export default Playlist
