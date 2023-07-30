@@ -52,22 +52,11 @@ border-radius: 0 0 0 0.5rem ;
 
 export const VideoList = () => {
   const { category } = useParams();
-  const {watchLaterVideos,setWatchLaterVideos} = useData();
+  const {watchLaterVideos,toggleWatchLater} = useData();
   
   const filteredVideos = videos.filter(
     (item) => item.category.toLowerCase() === category.toLowerCase()
   );
-
-  const toggleWatchLater = (id) => {
-    if (watchLaterVideos.some((video) => video._id === id)) {
-      setWatchLaterVideos((prevWatchLaterVideos) =>
-        prevWatchLaterVideos.filter((video) => video._id !== id)
-      );
-    } else {
-      const videoToAdd = videos.find((video) => video._id === id);
-      setWatchLaterVideos((prevWatchLaterVideos) => [...prevWatchLaterVideos, videoToAdd]);
-    }
-  };
 
   return (
     <div>
