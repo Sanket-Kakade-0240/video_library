@@ -39,7 +39,7 @@ const Home = () => {
             <Right>
                 {categories.map((category) => (
                 <Card key={category._id}>
-                    <Link to={`/videos/${category.category}`  }>
+                    <Link to={`/videos/${category.category}`} style={{ textDecoration: 'none', color: 'black' }}>
                     
                     <img src={category.thumbnail} alt="" width={200}/>  
                     <h3>{category.category}</h3>  
